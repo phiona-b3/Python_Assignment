@@ -1,3 +1,4 @@
+#stone-knife-paper functionality
 import random
 
 def get_computer_choice():
