@@ -2,7 +2,6 @@ import random
 
 def stone_knife_paper():
     while True:
-
         computer_choice = random.randint(0,2)
         user_choice = input("Enter your choice(S for stone, K for knife, P for paper): ")
         user_choice = user_choice.upper()
