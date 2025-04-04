@@ -21,3 +21,12 @@ computer_choice = get_computer_choice()
 print(f"Computer chose: {computer_choice}")
 print(determine_winner(player_choice, computer_choice))
 
+def convert(fahrenheit):
+    return 5/9 * (fahrenheit - 32)
+
+fahrenheit = float(input("Enter temperature in Fahrenheit: "))
+celsius = convert(fahrenheit)
+print(f"Temperature in Celsius: {celsius:.2f}")
+print("IT'S HOT HERE" if celsius > 20 else "IT'S COLD HERE")
+
+
