@@ -1,32 +1,42 @@
 import random
 
-def get_computer_choice():
-    choices = ["S", "K", "P"]
-    return random.choice(choices)
-
-def determine_winner(player, computer):
-    if player == computer:
-        return "It's a tie!"
-    elif (player == "S" and computer == "K") or \
-         (player == "K" and computer == "P") or \
-         (player == "P" and computer == "S"):
-        return "You win!"
-    else:
-        return "Computer wins!"
-
-# Get user choice
-player_choice = input("Enter S for Stone, K for Knife, or P for Paper: ").upper()
-computer_choice = get_computer_choice()
-
-print(f"Computer chose: {computer_choice}")
-print(determine_winner(player_choice, computer_choice))
-
-def convert(fahrenheit):
-    return 5/9 * (fahrenheit - 32)
-
-fahrenheit = float(input("Enter temperature in Fahrenheit: "))
-celsius = convert(fahrenheit)
-print(f"Temperature in Celsius: {celsius:.2f}")
-print("IT'S HOT HERE" if celsius > 20 else "IT'S COLD HERE")
+def stone_knife_paper():
+    while True:
+        computer_choice = random.randint(0,2)
+        user_choice = input("Enter your choice(S for stone, K for knife, P for paper): ")
+        user_choice = user_choice.upper()
 
 
+        if user_choice not in['S','K','P']:
+            print("invalid input.please enter S,K or P.")
+
+            continue
+
+        if computer_choice == 0:
+            computer_choice_str = 'S'
+        elif computer_choice ==1:
+            computer_choice_str = 'K'
+        else:
+            computer_choice_str = 'P'
+
+
+        print(f"computer's choice: {computer_choice_str}")
+
+
+        if user_choice == computer_choice_str:
+            print("It's a tie!")
+
+        elif (user_choice == 'S' and computer_choice_str == 'K')or\
+             (user_choice == 'K' and computer_choice_str == 'P')or\
+             (user_choice == 'P' and computer_choice_str == 'S'):
+            print("Congratulation you win!")
+
+        else:
+            ("Computer wins!")
+
+
+        play_again = input("Do you want to play again?(yes/no):")
+        if play_again.lower() !='yes':
+            break
+
+stone_knife_paper()
