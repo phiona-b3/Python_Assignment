@@ -6,7 +6,7 @@ def sales():
     grand_total = 0
 
     for i in range(num_salesmen):
-        name = input(f"\nEnter name of salesman {i + 1}: ")
+        name = input(f"\nEnter name of salesman {i + 1}: ").strip
         print("Enter sales for 5 items separated by spaces (e.g. 10 20 15 30 25):")
         sales = list(map(float, input("→ ").split()))
 
@@ -18,7 +18,7 @@ def sales():
         grand_total += total
         salesmen_data.append((name, sales, total))
 
-    print("\nName\tItem1\tItem2\tItem3\tItem4\tItem5\tTotal")
+    print("\nName   \tItem1\tItem2\tItem3\tItem4\tItem5\tTotal")
     print("------------------------------------------------------------")
 
     for entry in salesmen_data:
@@ -27,6 +27,6 @@ def sales():
         print(f"{name}\t{sales_str}\t{int(total)}")
 
     print("------------------------------------------------------------")
-    print(f"GrandTotal:\t\t\t\t\t\t{int(grand_total)}")
+    print(f"Grand Total:\t\t\t\t\t\t{int(grand_total)}")
 
 sales()
