@@ -1,42 +1,38 @@
 import random
 
-def stone_knife_paper():
-    while True:
-        computer_choice = random.randint(0,2)
-        user_choice = input("Enter your choice(S for stone, K for knife, P for paper): ")
-        user_choice = user_choice.upper()
+def generate_computer_choice():
+    num = random.randint(0,2) #Randomly choose 0,1,2
+    if num == 0:
+        return "S" #stone
+    elif num == 1:
+        return "K" #knife
+    else:
+        return "P" #paper
+#print(generate_computer_choice())
 
+def play_stone_knife_paper_game():
+    num_rounds = int(input("Enter the number of rounds to play: "))
 
-        if user_choice not in['S','K','P']:
-            print("invalid input.please enter S,K or P.")
+    if num_rounds <= 0:
+        print("Please enter a positive number of rounds.")
+        return
 
-            continue
+    for round_num in range(1, num_rounds + 1):
+        print(f"\n Round {round_num}/{num_rounds}")
 
-        if computer_choice == 0:
-            computer_choice_str = 'S'
-        elif computer_choice ==1:
-            computer_choice_str = 'K'
-        else:
-            computer_choice_str = 'P'
+        user_choice = input("Enter S(stone), or K(knife) or P(paper) to play the game: ").upper()
+        if user_choice not in ["S", "K", "P"]:
+            print("Invalid input! Please enter S, K, or P.")
 
+        computer_choice = generate_computer_choice()
+        print(f"Computer chose: {computer_choice}")
 
-        print(f"computer's choice: {computer_choice_str}")
-
-
-        if user_choice == computer_choice_str:
-            print("It's a tie!")
-
-        elif (user_choice == 'S' and computer_choice_str == 'K')or\
-             (user_choice == 'K' and computer_choice_str == 'P')or\
-             (user_choice == 'P' and computer_choice_str == 'S'):
-            print("Congratulation you win!")
-
-        else:
-            ("Computer wins!")
-
-
-        play_again = input("Do you want to play again?(yes/no):")
-        if play_again.lower() !='yes':
-            break
-
-stone_knife_paper()
+        if user_choice == computer_choice:
+            print( "It is a tie.")
+        elif (user_choice == "S" and computer_choice == "K") or \
+            (user_choice == "K" and computer_choice == "P") or \
+            (user_choice == "P" and computer_choice == "S"):
+            print("You win!")
+        else: 
+            print("You Lose!")
+play_stone_knife_paper_game()
