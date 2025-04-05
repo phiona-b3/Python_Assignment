@@ -23,6 +23,7 @@ def play_stone_knife_paper_game():
         user_choice = input("Enter S(stone), or K(knife) or P(paper) to play the game: ").upper()
         if user_choice not in ["S", "K", "P"]:
             print("Invalid input! Please enter S, K, or P.")
+            user_choice = input("Enter S(stone), K(knife) or P(paper): ").upper()
 
         computer_choice = generate_computer_choice()
         print(f"Computer chose: {computer_choice}")
