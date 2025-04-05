@@ -1,38 +1,32 @@
-import numpy as np
+def sales():
+    num_salesmen = 10
+    num_items = 5
 
-def sales_report_with_numpy():
-    salesmen_names = []
-    sales_array = np.zeros((10, 5))  # 10 salesmen, 5 items
+    salesmen_data = []
+    grand_total = 0
 
-    # Input names and sales
-    for i in range(10):
-        name = input(f"\nEnter name of salesman #{i+1}: ")
-        salesmen_names.append(name)
+    for i in range(num_salesmen):
+        name = input(f"\nEnter name of salesman {i + 1}: ")
+        print("Enter sales for 5 items separated by spaces (e.g. 10 20 15 30 25):")
+        sales = list(map(float, input("→ ").split()))
 
-        print("Enter sales for 5 items:")
-        for j in range(5):
-            while True:
-                try:
-                    sales_array[i][j] = float(input(f"  Item{j+1} sale: "))
-                    break
-                except ValueError:
-                    print("  Invalid input! Please enter a number.")
+        while len(sales) != 5:
+            print("❗ Please enter exactly 5 numbers.")
+            sales = list(map(float, input("→ ").split()))
 
-    # Calculate total per salesman and grand total
-    total_per_salesman = np.sum(sales_array, axis=1)
-    grand_total = np.sum(sales_array)
+        total = sum(sales)
+        grand_total += total
+        salesmen_data.append((name, sales, total))
 
-    # Print Report
-    print("\nSales Report:")
-    print("Name\t\tItem1\tItem2\tItem3\tItem4\tItem5\tTotalSales")
-    print("--------------------------------------------------------------")
-    
-    for i in range(10):
-        item_sales = "\t".join(f"{sales_array[i][j]:.0f}" for j in range(5))
-        print(f"{salesmen_names[i]:<10}\t{item_sales}\t{total_per_salesman[i]:.0f}")
+    print("\nName\tItem1\tItem2\tItem3\tItem4\tItem5\tTotal")
+    print("------------------------------------------------------------")
 
-    print("--------------------------------------------------------------")
-    print(f"Grand Total:\t\t\t\t\t\t{grand_total:.0f}")
+    for entry in salesmen_data:
+        name, sales, total = entry
+        sales_str = '\t'.join(str(int(s)) for s in sales)
+        print(f"{name}\t{sales_str}\t{int(total)}")
 
-# Run the function
-sales_report_with_numpy()
+    print("------------------------------------------------------------")
+    print(f"GrandTotal:\t\t\t\t\t\t{int(grand_total)}")
+
+sales()
