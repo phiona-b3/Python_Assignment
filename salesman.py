@@ -6,7 +6,7 @@ def sales():
     grand_total = 0
 
     for i in range(num_salesmen):
-        name = input(f"\nEnter name of salesman {i + 1}: ").strip
+        name = input(f"\nEnter name of salesman {i + 1}: ").strip()
         print("Enter sales for 5 items separated by spaces (e.g. 10 20 15 30 25):")
         sales = list(map(float, input("→ ").split()))
 
