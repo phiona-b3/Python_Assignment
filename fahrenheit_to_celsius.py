@@ -10,10 +10,6 @@ if celsius_temp > 20:
     print("IT'S HOT HERE")
 else:
     print("IT’S COLD HERE")
-# Function to convert Fahrenheit to Celsius
-def convert(fahrenheit):
-   # Convert Fahrenheit to Celsius
-    celsius = 5/9 * (fahrenheit - 32)
-    return celsius
+
 
 
