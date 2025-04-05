@@ -18,12 +18,12 @@ def play_stone_knife_paper_game():
         return
 
     for round_num in range(1, num_rounds + 1):
-        print(f"\n Round {round_num}/{num_rounds}")
+        print(f"\nRound {round_num}/{num_rounds}")
 
-        user_choice = input("Enter S(stone), or K(knife) or P(paper) to play the game: ").upper()
+        user_choice = input("Enter S(stone), or K(knife) or P(paper) to play the game: ").strip().upper()
         if user_choice not in ["S", "K", "P"]:
             print("Invalid input! Please enter S, K, or P.")
-            user_choice = input("Enter S(stone), K(knife) or P(paper): ").upper()
+            user_choice = input("Enter S(stone), K(knife) or P(paper): ").strip().upper()
 
         computer_choice = generate_computer_choice()
         print(f"Computer chose: {computer_choice}")
