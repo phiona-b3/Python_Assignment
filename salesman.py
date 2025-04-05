@@ -1,38 +1,37 @@
-import numpy as np
+sales_data = {}
+grand_total = 0
 
-def sales_report_with_numpy():
-    salesmen_names = []
-    sales_array = np.zeros((10, 5))  # 10 salesmen, 5 items
 
-    # Input names and sales
-    for i in range(10):
-        name = input(f"\nEnter name of salesman #{i+1}: ")
-        salesmen_names.append(name)
-
-        print("Enter sales for 5 items:")
-        for j in range(5):
-            while True:
-                try:
-                    sales_array[i][j] = float(input(f"  Item{j+1} sale: "))
-                    break
-                except ValueError:
-                    print("  Invalid input! Please enter a number.")
-
-    # Calculate total per salesman and grand total
-    total_per_salesman = np.sum(sales_array, axis=1)
-    grand_total = np.sum(sales_array)
-
-    # Print Report
-    print("\nSales Report:")
-    print("Name\t\tItem1\tItem2\tItem3\tItem4\tItem5\tTotalSales")
-    print("--------------------------------------------------------------")
+for _ in range(10):
     
-    for i in range(10):
-        item_sales = "\t".join(f"{sales_array[i][j]:.0f}" for j in range(5))
-        print(f"{salesmen_names[i]:<10}\t{item_sales}\t{total_per_salesman[i]:.0f}")
+    name = input("Enter salesperson's name: ")
 
-    print("--------------------------------------------------------------")
-    print(f"Grand Total:\t\t\t\t\t\t{grand_total:.0f}")
 
-# Run the function
-sales_report_with_numpy()
+    sales = []
+
+
+    for i in range(1, 6):
+        sale = int(input(f"Enter sales for Item {i}: "))
+        sales.append(sale)
+
+
+    total_sales = sum(sales)
+
+
+    sales_data[name] = (sales, total_sales)
+
+
+    grand_total += total_sales
+
+
+print("\nSales Report:")
+
+print(f"{'Name':<15}{'Item1':<6}{'Item2':<6}{'Item3':<6}{'Item4':<6}{'Item5':<6}{'Total Sales':<10}")
+print("-" * 60)
+
+for name, (sales, total_sales) in sales_data.items():
+    print(f"{name:<15}{sales[0]:<6}{sales[1]:<6}{sales[2]:<6}{sales[3]:<6}{sales[4]:<6}{total_sales:<10}")
+
+
+print("-" * 60)
+print(f"{'Grand Total':<15}{grand_total:<10}")
